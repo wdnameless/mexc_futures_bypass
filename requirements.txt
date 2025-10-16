@@ -1,0 +1,48 @@
+# MEXC Futures Bypass - Requirements
+
+# Основные зависимости
+httpx>=0.24.0
+aiohttp>=3.8.0
+websockets>=11.0.0
+asyncio
+
+# Обработка данных
+pandas>=1.5.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+
+# Логирование и мониторинг
+loguru>=0.7.0
+rich>=13.0.0
+
+# Криптография
+cryptography>=41.0.0
+pycryptodome>=3.18.0
+
+# Конфигурация
+pydantic>=2.0.0
+pyyaml>=6.0
+
+# Тестирование
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+
+# Дополнительные утилиты
+requests>=2.31.0
+urllib3>=2.0.0
+
+# WebSocket клиент
+websocket-client>=1.6.0
+
+# JSON обработка
+ujson>=5.8.0
+
+# Время и даты
+python-dateutil>=2.8.0
+
+# Математические функции
+scipy>=1.10.0
+
+# Параллельная обработка
+concurrent-futures>=3.1.0
