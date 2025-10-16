@@ -147,8 +147,9 @@ async def main():
     print()
     
     print("Demo completed!")
-    print("\nFor full functionality, purchase the complete methods collection.")
-    print("Contact: @shitmane")
+    print("\n⚠️ This is a PAID collection of methods.")
+    print("For full functionality, purchase the complete methods collection.")
+    print("Price: $100 | Contact: @shitmane")
 
 if __name__ == "__main__":
     asyncio.run(main())

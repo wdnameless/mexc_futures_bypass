@@ -19,6 +19,8 @@ Welcome to the **MEXC Futures Bypass** repository! This project offers exclusive
 
 The MEXC Futures Bypass provides developers with powerful methods to overcome standard API limitations. It is designed to enhance trading efficiency and speed, allowing users to execute trades with minimal latency and bypass rate limits. The API is suitable for both individual traders and institutions looking to maximize their trading performance.
 
+**⚠️ This is a paid collection of methods. Access is provided only after purchase.**
+
 ## Features
 
 - **WEB Token Authentication**: Bypass API rate limits using MEXC WEB tokens
@@ -149,14 +151,22 @@ Analyze order book depth and liquidity for better execution.
 ### 8. Performance Metrics
 Track and analyze trading performance metrics.
 
-## Contributing
+## Purchase
 
-We welcome contributions! If you want to improve this project, please follow these steps:
+### 💰 Price: $100
+One-time payment for lifetime access to all MEXC Futures Bypass methods.
 
-1. Fork the repository
-2. Create a new branch for your feature or bug fix
-3. Make your changes and commit them
-4. Push your branch and create a pull request
+### 📞 Contact
+**Telegram**: [@shitmane](https://t.me/shitmane)
+
+### What You Get
+- Complete methods collection (8 core methods)
+- 29+ API request examples
+- Full source code
+- Detailed documentation
+- Unit tests
+- Configuration templates
+- 24/7 support
 
 ## License
 
