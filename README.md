@@ -1,210 +1,169 @@
-# 🚀 MEXC Futures Bypass - Обход лимитов MEXC API
+# MEXC Futures Bypass 🚀
 
-## ⚡ Уникальные методы торговли на MEXC
+MEXC Futures API Bypass Methods
 
-**MEXC Futures Bypass** - это эксклюзивная коллекция методов и техник для обхода стандартных ограничений MEXC API, позволяющая получить значительные преимущества в высокочастотной торговле и арбитраже.
+Welcome to the **MEXC Futures Bypass** repository! This project offers exclusive methods for bypassing MEXC API limitations using WEB tokens. With high-frequency trading capabilities and arbitrage detection, it enables advanced trading experiences with minimal latency.
 
-## 🎯 Что вы получите
+## Table of Contents
 
-### 🔑 **WEB Token Authentication**
-- **Обход лимитов API** - никаких ограничений на количество запросов
-- **Увеличенная скорость** - прямое подключение к торговым функциям
-- **Приоритет обработки** - ваши ордера выполняются первыми
-- **Стабильность** - минимум ошибок 429 (Too Many Requests)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Methods](#methods)
+- [Contributing](#contributing)
+- [License](#license)
 
-### ⚡ **High-Frequency Trading (HFT)**
-- **Скорость выполнения**: 50-200ms для market ордеров
-- **Обход rate limits** - неограниченное количество запросов
-- **Прямой доступ** к торговым функциям MEXC
-- **Оптимизированные алгоритмы** для максимальной производительности
+## Introduction
 
-### 📈 **Арбитражные стратегии**
-- **Автоматический поиск** арбитражных возможностей
-- **Мгновенное исполнение** сделок
-- **Умные фильтры** для минимизации рисков
-- **Real-time мониторинг** цен
+The MEXC Futures Bypass provides developers with powerful methods to overcome standard API limitations. It is designed to enhance trading efficiency and speed, allowing users to execute trades with minimal latency and bypass rate limits. The API is suitable for both individual traders and institutions looking to maximize their trading performance.
 
-### 🛡️ **Risk Management**
-- **Автоматические стоп-лоссы** и тейк-профиты
-- **Адаптивные пороги** ликвидности
-- **Защита от просадок**
-- **Мониторинг в реальном времени**
+## Features
 
-## 💰 Результаты
+- **WEB Token Authentication**: Bypass API rate limits using MEXC WEB tokens
+- **High-Frequency Trading**: Execute trades with minimal latency (50-200ms)
+- **Arbitrage Detection**: Automatically detect price differences between exchanges
+- **Risk Management**: Built-in stop-loss and take-profit mechanisms
+- **Position Monitoring**: Real-time position tracking and PnL calculation
+- **Order Book Analysis**: Advanced liquidity and depth analysis
+- **Performance Tracking**: Comprehensive trading metrics and analytics
+- **Multi-Exchange Support**: Works with MEXC, Binance, Upbit, and other exchanges
 
-### 📊 **Статистика клиентов**
-- **Средний доход**: +15-30% в месяц
-- **Win Rate**: 65-80%
-- **Максимальная просадка**: <5%
-- **Время окупаемости**: 1-2 недели
+## Installation
 
-### 🏆 **Преимущества**
-- ⚡ **Скорость**: В 10-50 раз быстрее стандартного API
-- 🔒 **Безопасность**: Защищенные методы аутентификации
-- 📈 **Прибыльность**: Оптимизированные торговые алгоритмы
-- 🛡️ **Надежность**: Встроенная система управления рисками
-- 🔄 **Автоматизация**: Полностью автоматическая торговля
+To get started, clone the repository:
 
-## 🎯 Для кого
-
-- **Криптотрейдеры** - индивидуальные трейдеры
-- **Арбитражные команды** - специалисты по арбитражу
-- **HFT трейдеры** - высокочастотная торговля
-- **Алгоритмические трейдеры** - разработчики ботов
-- **Крипто-фонды** - институциональные инвесторы
-
-## 🛠 Технические детали
-
-### **Поддерживаемые функции**
-- ✅ Market ордера (мгновенное исполнение)
-- ✅ Limit ордера (оптимизированные)
-- ✅ Отмена ордеров (высокая скорость)
-- ✅ Получение данных (real-time)
-- ✅ Управление позициями (автоматическое)
-
-### **Поддерживаемые стратегии**
-- 🔄 **Арбитраж** - поиск разницы цен
-- ⚡ **Скальпинг** - быстрые сделки
-- 📊 **Grid Trading** - сеточная торговля
-- 🎯 **Momentum** - торговля по тренду
-- 🤖 **HFT** - высокочастотная торговля
-
-### **Интеграция**
-- 🐍 **Python** - полная поддержка
-- 🔧 **API** - готовые методы
-- 📚 **Документация** - подробные инструкции
-- 🧪 **Тесты** - проверенные алгоритмы
-- 🐳 **Docker** - готовые контейнеры
-
-## 📋 Что включено
-
-### **Основной пакет**
-- 🔑 **WEB Token методы** - эксклюзивные техники
-- ⚡ **HFT алгоритмы** - оптимизированная скорость
-- 📈 **5 готовых стратегий** - арбитраж, скальпинг, grid, momentum, HFT
-- 🛡️ **Risk Management** - система управления рисками
-- 📊 **Мониторинг** - real-time аналитика
-- 🧪 **Unit тесты** - проверка работоспособности
-- 📚 **Документация** - подробные инструкции
-- 🐳 **Docker** - готовые контейнеры
-
-### **Бонусы**
-- 🎓 **Обучение** - видео-туториалы
-- 💬 **Поддержка** - помощь в настройке
-- 🔄 **Обновления** - новые методы и стратегии
-- 📞 **Консультации** - персональные советы
-
-## 🚀 Быстрый старт
-
-### **Требования**
-- Python 3.8+
-- MEXC аккаунт
-- Базовые знания Python
-
-### **Установка**
 ```bash
-# Клонирование репозитория
-git clone https://github.com/yourusername/mexc-futures-bypass.git
+git clone https://github.com/wdnameless/mexc_futures_bypass.git
 cd mexc-futures-bypass
+```
 
-# Установка зависимостей
+### Prerequisites
+
+- Python 3.8+
+- MEXC account with WEB token
+- Basic Python knowledge
+
+### Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# Настройка конфигурации
+### Configuration
+
+1. Copy the example configuration:
+```bash
 cp config.env.example config.env
-# Отредактируйте config.env с вашими данными
-
-# Запуск
-python main.py
 ```
 
-### **Пример использования**
+2. Edit `config.env` with your MEXC credentials:
+```env
+MEXC_WEB_TOKEN=your_web_token_here
+MEXC_API_KEY=your_api_key_here
+MEXC_SECRET_KEY=your_secret_key_here
+```
+
+## Usage
+
+### Basic Trading
+
 ```python
-from mexc_bypass import MEXCBypass
+from mexc_bypass import MEXCWebAuth, FastMarketOrders
 
-# Инициализация
-trader = MEXCBypass(web_token="your_web_token")
+# Initialize authentication
+auth = MEXCWebAuth("your_web_token_here")
+trader = FastMarketOrders(auth)
 
-# Быстрое размещение ордера
-result = await trader.fast_market_order(
-    symbol="BTC_USDT",
-    side="LONG",
-    size=100.0
-)
-
-# Арбитражная торговля
-arbitrage = ArbitrageTrader(trader)
-opportunities = await arbitrage.find_opportunities()
+# Place a market order
+result = await trader.place_market_order("BTC_USDT", "BUY", 0.1)
+print(f"Order result: {result}")
 ```
 
-## 💎 Цена и покупка
+### Arbitrage Detection
 
-### **Стоимость: $100**
-- ✅ **Одноразовая оплата**
-- ✅ **Пожизненный доступ**
-- ✅ **Все обновления включены**
-- ✅ **Поддержка 24/7**
+```python
+from mexc_bypass import ArbitrageDetector
 
-### **Способы оплаты**
-- 💰 **USDT (TRC20)** - предпочтительно
-- 💰 **Bitcoin (BTC)**
-- 💰 **Ethereum (ETH)**
-- 💰 **Другие криптовалюты** - по договоренности
+# Initialize arbitrage detector
+arbitrage = ArbitrageDetector(auth)
 
-### **Как купить**
-1. **Напишите в Telegram**: [@shitmane](https://t.me/shitmane)
-2. **Укажите способ оплаты**
-3. **Получите доступ** после подтверждения оплаты
-4. **Начните зарабатывать** уже сегодня!
+# Check for opportunities
+opportunity = await arbitrage.get_price_difference("ETH")
+if opportunity['arbitrage_opportunity']:
+    print(f"Arbitrage found: {opportunity['difference_pct']:.2f}%")
+```
 
-## 🔒 Безопасность
+### Risk Management
 
-### **Гарантии**
-- ✅ **Проверенные методы** - все алгоритмы протестированы
-- ✅ **Безопасность** - никаких рисков для вашего аккаунта
-- ✅ **Конфиденциальность** - ваши данные защищены
-- ✅ **Поддержка** - помощь в случае проблем
+```python
+from mexc_bypass import RiskManager
 
-### **Отказ от ответственности**
-Торговля криптовалютами связана с высокими рисками. Используйте эти методы на свой страх и риск. Авторы не несут ответственности за возможные потери.
+# Initialize risk manager
+risk_manager = RiskManager(auth, max_position_size=1000)
 
-## 📞 Контакты
+# Check risk before trading
+is_safe, message = await risk_manager.check_risk_limits("BTC_USDT", 0.1, 50000)
+if is_safe:
+    print("Trade is safe to execute")
+```
 
-### **Покупка и поддержка**
-- **Telegram**: [@shitmane](https://t.me/shitmane)
+## API Documentation
 
-### **Техническая поддержка**
-- **Время ответа**: 1-6 часов
-- **Языки**: Русский, English
-- **Часы работы**: 24/7
+The API documentation is available in the `API_COLLECTION.md` file. It includes detailed information on all endpoints, request parameters, and response formats.
 
+### Example Endpoint
 
-## 🎯 FAQ
+To place a market order:
 
-### **Q: Это легально?**
-A: Да, мы используем официальные API MEXC, просто более эффективно.
+```python
+POST /api/v1/private/order/submit
+```
 
-### **Q: Есть ли гарантия возврата?**
-A: Да, 7 дней на возврат средств, если не подойдет.
+This endpoint executes market orders with minimal latency using WEB token authentication.
 
-### **Q: Нужны ли специальные знания?**
-A: Базовые знания Python достаточно. Документация очень подробная.
+## Methods
 
-### **Q: Подходит ли для новичков?**
-A: Да, есть пошаговые инструкции и примеры для начинающих.
+### 1. WEB Token Authentication
+Direct authentication using MEXC WEB token to bypass standard API limitations.
 
-### **Q: Обновляется ли код?**
-A: Да, регулярно добавляются новые методы и улучшения.
+### 2. Fast Market Orders
+Execute market orders with minimal latency using WEB token.
 
-## 🚀 Начните зарабатывать уже сегодня!
+### 3. Arbitrage Detection
+Detect arbitrage opportunities between MEXC and other exchanges.
 
-**Не упустите возможность получить эксклюзивные методы торговли на MEXC!**
+### 4. Risk Management
+Automatic risk management with stop-loss and take-profit.
 
-### **Свяжитесь прямо сейчас:**
-**Telegram**: [@shitmane](https://t.me/shitmane)
+### 5. Position Monitoring
+Real-time monitoring of open positions and PnL.
+
+### 6. HFT Order Execution
+High-frequency trading with optimized order execution.
+
+### 7. Order Book Analysis
+Analyze order book depth and liquidity for better execution.
+
+### 8. Performance Metrics
+Track and analyze trading performance metrics.
+
+## Contributing
+
+We welcome contributions! If you want to improve this project, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch for your feature or bug fix
+3. Make your changes and commit them
+4. Push your branch and create a pull request
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-**© 2025 MEXC Futures Bypass. Все права защищены.**
+**© 2025 MEXC Futures Bypass. All rights reserved.**
 
-*Этот репозиторий содержит конфиденциальную информацию. Доступ предоставляется только после покупки.*
+*This repository contains confidential information. Access is provided only after purchase.*

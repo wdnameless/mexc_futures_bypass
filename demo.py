@@ -1,182 +1,154 @@
 """
-MEXC Futures Bypass - Demo Example
+MEXC Futures Bypass - Demo
 
-Этот файл показывает возможности обхода лимитов MEXC API.
-Для полного доступа к коду необходимо приобрести лицензию.
-
-Свяжитесь: @shitmane
+This demo shows how to use the MEXC Futures Bypass methods.
+Replace 'your_web_token_here' with your actual MEXC WEB token.
 """
 
 import asyncio
+import httpx
 import time
-from typing import Dict, List
+from typing import Dict, Optional
 
-class MEXCBypassDemo:
-    """Демонстрация возможностей MEXC Futures Bypass"""
+class MEXCWebAuth:
+    """WEB Token Authentication"""
     
-    def __init__(self):
-        self.demo_mode = True
-        self.capabilities = {
-            'web_token_bypass': True,
-            'hft_trading': True,
-            'arbitrage_detection': True,
-            'risk_management': True,
-            'real_time_monitoring': True
+    def __init__(self, web_token: str):
+        self.web_token = web_token
+        self.base_url = "https://contract.mexc.com"
+    
+    def get_headers(self):
+        """Get authentication headers"""
+        return {
+            'Authorization': f'Bearer {self.web_token}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'MEXC-Web-Trader/1.0'
         }
     
-    async def demonstrate_web_token_speed(self):
-        """Демонстрация скорости WEB-токена"""
-        print("🚀 Демонстрация скорости WEB-токена...")
-        
-        # Симуляция обычного API (медленно)
-        print("📊 Обычный API:")
-        start_time = time.time()
-        await asyncio.sleep(0.5)  # Симуляция задержки
-        normal_time = time.time() - start_time
-        print(f"   ⏱️ Время выполнения: {normal_time:.3f}s")
-        
-        # Симуляция WEB-токена (быстро)
-        print("⚡ WEB Token Bypass:")
-        start_time = time.time()
-        await asyncio.sleep(0.05)  # Симуляция быстрого выполнения
-        bypass_time = time.time() - start_time
-        print(f"   ⏱️ Время выполнения: {bypass_time:.3f}s")
-        
-        speedup = normal_time / bypass_time
-        print(f"   🎯 Ускорение: {speedup:.1f}x")
+    async def make_request(self, method: str, endpoint: str, data: dict = None):
+        """Make authenticated request"""
+        headers = self.get_headers()
+        async with httpx.AsyncClient() as client:
+            response = await client.request(
+                method, f"{self.base_url}{endpoint}",
+                headers=headers, json=data
+            )
+            return response.json()
+
+class FastMarketOrders:
+    """Fast market order execution"""
     
-    async def demonstrate_arbitrage_detection(self):
-        """Демонстрация поиска арбитража"""
-        print("\n🔍 Демонстрация поиска арбитража...")
+    def __init__(self, auth: MEXCWebAuth):
+        self.auth = auth
+    
+    async def place_market_order(self, symbol: str, side: str, size: float):
+        """Place market order with maximum speed"""
+        data = {
+            "symbol": symbol,
+            "side": side,
+            "type": "MARKET",
+            "quantity": str(size),
+            "leverage": "20"
+        }
         
-        # Симуляция данных
-        symbols = ["BTC_USDT", "ETH_USDT", "SOL_USDT"]
-        opportunities = []
+        start_time = time.time()
+        result = await self.auth.make_request(
+            "POST", "/api/v1/private/order/submit", data
+        )
+        execution_time = time.time() - start_time
         
-        for symbol in symbols:
-            # Симуляция цен
-            mexc_price = 50000 + (hash(symbol) % 1000)
-            dex_price = mexc_price * (1 + (hash(symbol) % 200 - 100) / 10000)
+        print(f"Order executed in {execution_time:.3f}s")
+        return result
+
+class ArbitrageDetector:
+    """Arbitrage opportunity detection"""
+    
+    def __init__(self, auth: MEXCWebAuth):
+        self.auth = auth
+        self.dex_url = "https://api.dexscreener.com/latest/dex"
+    
+    async def get_price_difference(self, token: str):
+        """Calculate price difference between MEXC and DEX"""
+        try:
+            # Get MEXC price
+            mexc_data = await self.auth.make_request(
+                "GET", f"/api/v1/private/contract/ticker?symbol={token}_USDT"
+            )
+            mexc_price = float(mexc_data['data']['lastPrice'])
             
-            spread = abs(mexc_price - dex_price) / min(mexc_price, dex_price) * 100
+            # Get DEX price
+            async with httpx.AsyncClient() as client:
+                dex_response = await client.get(f"{self.dex_url}/tokens/{token}")
+                dex_data = dex_response.json()
+                if dex_data['pairs']:
+                    dex_price = float(dex_data['pairs'][0]['priceUsd'])
+                else:
+                    return None
             
-            if spread >= 3.0:  # Минимальный спред
-                opportunities.append({
-                    'symbol': symbol,
-                    'mexc_price': mexc_price,
-                    'dex_price': dex_price,
-                    'spread': spread,
-                    'direction': 'LONG' if mexc_price < dex_price else 'SHORT'
-                })
-        
-        print(f"   📊 Найдено возможностей: {len(opportunities)}")
-        for opp in opportunities:
-            print(f"   💰 {opp['symbol']}: {opp['spread']:.2f}% спред")
+            # Calculate difference
+            difference = abs(mexc_price - dex_price) / mexc_price * 100
+            
+            return {
+                'token': token,
+                'mexc_price': mexc_price,
+                'dex_price': dex_price,
+                'difference_pct': difference,
+                'arbitrage_opportunity': difference > 0.5
+            }
+        except Exception as e:
+            print(f"Error getting price difference for {token}: {e}")
+            return None
+
+async def demo_basic_trading():
+    """Basic trading demo"""
+    print("=== Basic Trading Demo ===")
     
-    async def demonstrate_hft_capabilities(self):
-        """Демонстрация HFT возможностей"""
-        print("\n⚡ Демонстрация HFT возможностей...")
-        
-        # Симуляция HFT торговли
-        trades = []
-        start_time = time.time()
-        
-        for i in range(10):
-            # Симуляция быстрой сделки
-            trade_time = time.time() - start_time
-            trades.append({
-                'trade_id': i + 1,
-                'symbol': f"TOKEN_{i}",
-                'side': 'LONG' if i % 2 == 0 else 'SHORT',
-                'execution_time': trade_time,
-                'pnl': (hash(f"trade_{i}") % 100 - 50) / 100
-            })
-        
-        total_time = time.time() - start_time
-        trades_per_second = len(trades) / total_time
-        
-        print(f"   📊 Выполнено сделок: {len(trades)}")
-        print(f"   ⏱️ Общее время: {total_time:.3f}s")
-        print(f"   🚀 Скорость: {trades_per_second:.1f} сделок/сек")
-        
-        profitable_trades = sum(1 for t in trades if t['pnl'] > 0)
-        win_rate = profitable_trades / len(trades) * 100
-        print(f"   🎯 Win Rate: {win_rate:.1f}%")
+    # Initialize (replace with your actual token)
+    auth = MEXCWebAuth("your_web_token_here")
+    trader = FastMarketOrders(auth)
     
-    async def demonstrate_risk_management(self):
-        """Демонстрация системы управления рисками"""
-        print("\n🛡️ Демонстрация Risk Management...")
-        
-        # Симуляция позиций
-        positions = [
-            {'symbol': 'BTC_USDT', 'pnl': 2.5, 'size': 1000},
-            {'symbol': 'ETH_USDT', 'pnl': -1.2, 'size': 500},
-            {'symbol': 'SOL_USDT', 'pnl': 0.8, 'size': 300}
-        ]
-        
-        total_pnl = sum(p['pnl'] for p in positions)
-        max_drawdown = min(p['pnl'] for p in positions)
-        
-        print(f"   📊 Общий PnL: ${total_pnl:.2f}")
-        print(f"   📉 Максимальная просадка: ${max_drawdown:.2f}")
-        
-        # Проверка лимитов
-        if total_pnl < -50:  # Стоп-лосс
-            print("   🚨 Сработал стоп-лосс!")
-        elif total_pnl > 100:  # Тейк-профит
-            print("   🎯 Сработал тейк-профит!")
+    # Place a market order
+    try:
+        result = await trader.place_market_order("BTC_USDT", "BUY", 0.001)
+        print(f"Order result: {result}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+async def demo_arbitrage_detection():
+    """Arbitrage detection demo"""
+    print("=== Arbitrage Detection Demo ===")
+    
+    auth = MEXCWebAuth("your_web_token_here")
+    arbitrage = ArbitrageDetector(auth)
+    
+    # Check for arbitrage opportunities
+    tokens = ["BTC", "ETH", "BNB"]
+    
+    for token in tokens:
+        opportunity = await arbitrage.get_price_difference(token)
+        if opportunity and opportunity['arbitrage_opportunity']:
+            print(f"Arbitrage found for {token}: {opportunity['difference_pct']:.2f}%")
         else:
-            print("   ✅ Позиции в пределах лимитов")
-    
-    async def demonstrate_monitoring(self):
-        """Демонстрация мониторинга"""
-        print("\n📊 Демонстрация мониторинга...")
-        
-        # Симуляция метрик
-        metrics = {
-            'total_trades': 150,
-            'winning_trades': 95,
-            'total_pnl': 1250.50,
-            'max_drawdown': -75.25,
-            'win_rate': 63.3,
-            'profit_factor': 1.85,
-            'average_win': 15.25,
-            'average_loss': -8.75
-        }
-        
-        print("   📈 Статистика торговли:")
-        for key, value in metrics.items():
-            if isinstance(value, float):
-                print(f"      {key}: {value:.2f}")
-            else:
-                print(f"      {key}: {value}")
-    
-    async def run_demo(self):
-        """Запуск полной демонстрации"""
-        print("🎯 MEXC Futures Bypass - Демонстрация возможностей")
-        print("=" * 60)
-        
-        await self.demonstrate_web_token_speed()
-        await self.demonstrate_arbitrage_detection()
-        await self.demonstrate_hft_capabilities()
-        await self.demonstrate_risk_management()
-        await self.demonstrate_monitoring()
-        
-        print("\n" + "=" * 60)
-        print("🎉 Демонстрация завершена!")
-        print("\n💡 Для получения полного доступа к коду:")
-        print("   📞 Telegram: @shitmane")
-        print("   💰 Стоимость: $100")
-        print("   🚀 Начните зарабатывать уже сегодня!")
+            print(f"No arbitrage for {token}")
 
 async def main():
-    """Главная функция демо"""
-    demo = MEXCBypassDemo()
-    await demo.run_demo()
+    """Main demo function"""
+    print("MEXC Futures Bypass - Demo")
+    print("=" * 40)
+    
+    print("Note: Replace 'your_web_token_here' with your actual MEXC WEB token")
+    print()
+    
+    # Run demos
+    await demo_basic_trading()
+    print()
+    
+    await demo_arbitrage_detection()
+    print()
+    
+    print("Demo completed!")
+    print("\nFor full functionality, purchase the complete methods collection.")
+    print("Contact: @shitmane")
 
 if __name__ == "__main__":
-    print("⚠️  ВНИМАНИЕ: Это демонстрационная версия!")
-    print("   Для полного доступа к коду приобретите лицензию.")
-    print("   Свяжитесь: @shitmane\n")
-    
     asyncio.run(main())
